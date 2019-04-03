@@ -12,8 +12,4 @@ public class SentiloApplication {
         SpringApplication.run(SentiloApplication.class, args);
     }
 
-    @GetMapping("/")
-    public String index(){
-        return("index");
-    }
 }
