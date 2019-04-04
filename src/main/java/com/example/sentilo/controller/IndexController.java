@@ -1,5 +1,7 @@
 package com.example.sentilo.controller;
 
+import com.example.sentilo.model.User;
+import com.example.sentilo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,8 @@ import java.util.Map;
 @Controller
 
 public class IndexController {
+
+    private UserRepository repositori;
 
     @RequestMapping("/hola")
     public String index() {
@@ -36,6 +40,7 @@ public class IndexController {
     @PostMapping("/signup")
     public String postSignup(@RequestParam Map<String,String> allParams){
         System.out.println("HELLO THERE"+allParams.entrySet());
+      //  repositori.save(new User())
         return "redirect:/";
     }
 }
