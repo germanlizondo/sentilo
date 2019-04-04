@@ -1,13 +1,15 @@
 package com.example.sentilo.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class User {
 
     @Id
-    private String id;
+    private ObjectId id;
     private String name;
     private String password;
+    private String role;
 
     public User() {
     }
@@ -28,7 +30,7 @@ public class User {
      *
      * @return Value of id.
      */
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
@@ -46,7 +48,7 @@ public class User {
      *
      * @param id New value of id.
      */
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

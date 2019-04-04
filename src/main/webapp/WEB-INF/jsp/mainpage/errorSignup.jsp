@@ -1,18 +1,21 @@
-<jsp:include page="shared/mainpage/head.jsp" />
-<jsp:include page="shared/mainpage/navbar.jsp" />
+<jsp:include page="shared/head.jsp" />
+<jsp:include page="shared/navbar.jsp" />
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12"></div>
         <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
-            <form action="/login" method="post">
+            <div class="alert alert-danger" role="alert">
+                The passwords doesn't match!
+            </div>
+            <form action="/signup" method="post">
                 <div class="form-group">
                     <label for="user">User</label>
                     <input name="user" type="text" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter User">
                 </div>
                 <div class="form-group">
-                <label for="password">Password</label>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password">
-            </div>
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password">
+                </div>
 
                 <div class="form-group">
                     <label for="passwordCorrect">Repeat Password</label>
@@ -27,27 +30,7 @@
 
 </div>
 
-<script>
-    window.onload = function () {
-
-        var passwordCorrect = document.getElementById("passwordCorrect");
-        var passwordValue = document.getElementById("password");
-        var button = document.getElementById("button")
-
-        button.disabled = true;
-
-        passwordCorrect.addEventListener("keyup",function () {
-            if(passwordValue.value == passwordCorrect.value){
-                button.disabled = false;
-            }else{
-                button.disabled = true;
-            }
-        })
-    }
 
 
 
-</script>
-
-
-<jsp:include page="shared/mainpage/footer.jsp" />
+<jsp:include page="shared/footer.jsp" />

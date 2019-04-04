@@ -2,6 +2,7 @@ package com.example.sentilo.controller;
 
 import com.example.sentilo.model.User;
 import com.example.sentilo.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,16 +15,17 @@ import java.util.Map;
 
 public class IndexController {
 
+    @Autowired
     private UserRepository repositori;
 
-    @RequestMapping("/hola")
+    @RequestMapping("/")
     public String index() {
-        return ("index");
+        return ("mainpage/index");
     }
 
     @RequestMapping("/login")
     public String login() {
-        return ("login");
+        return ("mainpage/login");
     }
 
     @PostMapping("/login")
@@ -34,13 +36,30 @@ public class IndexController {
 
     @RequestMapping("/signup")
     public String signup() {
-        return ("signup");
+        return ("mainpage/signup");
     }
 
     @PostMapping("/signup")
     public String postSignup(@RequestParam Map<String,String> allParams){
-        System.out.println("HELLO THERE"+allParams.entrySet());
-      //  repositori.save(new User())
-        return "redirect:/";
+
+
+        if(allParams.get("password").equals(allParams.get("passwordCorrect"))){
+
+           System.out.println("HELLO THERE"+allParams);
+         repositori.save(new User(allParams.get("user"),allParams.get("password")));
+            return "redirect:/";
+        }else{
+            return "redirect:/errorSignup";
+        }
+
     }
+
+
+
+    @RequestMapping("/errorSignup")
+    public String errorSignup() {
+        return ("mainpage/errorSignup");
+    }
+
+
 }
