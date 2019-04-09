@@ -46,7 +46,7 @@ public class IndexController {
         if(allParams.get("password").equals(allParams.get("passwordCorrect"))){
 
            System.out.println("HELLO THERE"+allParams);
-         repositori.save(new User(allParams.get("user"),allParams.get("password")));
+         repositori.save(new User(allParams.get("user"),allParams.get("password"),allParams.get("role"),allParams.get("email")));
             return "redirect:/";
         }else{
             return "redirect:/errorSignup";

@@ -13,6 +13,10 @@
                     <input name="user" type="text" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter User">
                 </div>
                 <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
                 <label for="password">Password</label>
                 <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password">
             </div>
@@ -20,6 +24,14 @@
                 <div class="form-group">
                     <label for="passwordCorrect">Repeat Password</label>
                     <input  name="passwordCorrect"  type="password" class="form-control" id="passwordCorrect" placeholder="Repeat Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Select Role</label>
+                    <select name="role" class="form-control" id="role">
+                        <option value="user" selected>User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="button">Sign Up</button>

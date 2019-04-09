@@ -5,3 +5,5 @@
     <a href="/backoffice/components"><i class="fas fa-cogs"></i>&nbsp;Components</a>
     <a href="/backoffice/sensors"><i class="fas fa-flask"></i>&nbsp;Sensors</a>
 </div>
+
+<div class="contenido-sidenav">

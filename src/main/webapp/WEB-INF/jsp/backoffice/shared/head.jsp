@@ -14,3 +14,4 @@
     <title>Backoffice - Sentilo</title>
 </head>
 <body>
+<div class="root">

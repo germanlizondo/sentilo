@@ -6,12 +6,33 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="col-xl-6 col-lg-6 col-md-6 text-center">
-            <h1>USERS</h1>
-
-            <c:forEach var="user" items="${users}">
-                <h3>${user}</h3>
-            </c:forEach>
+        <div class="col-xl-12 col-lg-12 col-md-12 text-center">
+            <div class="columna">
+                <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Date Creation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${users}" varStatus="loop">
+                    <tr>
+                        <th scope="row">${loop.index+1}</th>
+                        <td>${user.getName()}</td>
+                        <td>${user.getEmail()}</td>
+                        <td>${user.getRole()}</td>
+                        <td>${user.getDataCreate()}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+                </div>
+            </div>
         </div>
 
     </div>
