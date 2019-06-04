@@ -17,6 +17,8 @@
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
                     <th scope="col">Date Creation</th>
+                    <th scope="col"></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +29,12 @@
                         <td>${user.getEmail()}</td>
                         <td>${user.getRole()}</td>
                         <td>${user.getDataCreate()}</td>
+                        <td>
+                            <form action="/backoffice/users/delete/${user.getName()}" method="POST">
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

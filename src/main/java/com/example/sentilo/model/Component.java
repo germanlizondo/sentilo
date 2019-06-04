@@ -7,17 +7,37 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Component {
-
+    /**
+     * ID
+     */
     @Id
     private ObjectId id;
+    /**
+     * name
+     */
     private String name;
+    /**
+     * description
+     */
     private String description;
+    /**
+     * creationDate
+     */
     private Date creationDate;
+    /**
+     * sensores
+     */
     private ArrayList<Sensor> sensores = new ArrayList<>();
-
+    /**
+     * Constructor Vacio POJO
+     */
     public Component() {
     }
 
+    /**
+     * Constructor
+     * @param name
+     */
     public Component(String name) {
         this.name = name;
         this.creationDate = new Date();

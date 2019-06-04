@@ -7,18 +7,41 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Sensor {
-
+    /**
+     * ID
+     */
     @Id
     private ObjectId id;
+    /**
+     * name
+     */
     private String name;
+    /**
+     * description
+     */
     private String description;
+    /**
+     * creationDate
+     */
     private Date creationDate;
+    /**
+     * type
+     */
     private String type;
+    /**
+     * data
+     */
     private ArrayList<Double> data;
-
+    /**
+     * Constructor Vacio POJO
+     */
     public Sensor() {
     }
 
+    /**
+     * Constructor
+     * @param name
+     */
     public Sensor(String name) {
         this.name = name;
         this.creationDate = new Date();

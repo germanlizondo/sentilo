@@ -22,17 +22,23 @@ public class IndexController {
 
     @Autowired
     private UserRepository repositori;
-
+    /**
+     * Ruta / GET
+     */
     @RequestMapping("/")
     public String index() {
         return ("mainpage/index");
     }
-
+    /**
+     * Ruta /login GET
+     */
     @RequestMapping("/login")
     public String login() {
         return ("mainpage/login");
     }
-
+    /**
+     * Ruta /login POST
+     */
     @PostMapping("/login")
     public String postLogin(@ModelAttribute("user") User user,@RequestParam Map<String,String> allParams){
 
@@ -58,12 +64,16 @@ public class IndexController {
         }
 
     }
-
+    /**
+     * Ruta /signup GET
+     */
     @RequestMapping("/signup")
     public String signup() {
         return ("mainpage/signup");
     }
-
+    /**
+     * Ruta /signup POST
+     */
     @PostMapping("/signup")
     public String postSignup(@RequestParam Map<String,String> allParams){
 
@@ -80,12 +90,16 @@ public class IndexController {
     }
 
 
-
+    /**
+     * Ruta /errorSignup GET
+     */
     @RequestMapping("/errorSignup")
     public String errorSignup() {
         return ("mainpage/errorSignup");
     }
-
+    /**
+     * Ruta /logout GET
+     */
     @RequestMapping("/logout")
     public String logout(@ModelAttribute("user") User user) {
 

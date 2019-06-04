@@ -4,10 +4,7 @@ import com.example.sentilo.model.Sensor;
 import com.example.sentilo.repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -18,7 +15,9 @@ public class SensorsController {
 
     @Autowired
     private SensorRepository sensorRepository;
-
+    /**
+     * Ruta /backoffice/sensors GET
+     */
     @RequestMapping("/backoffice/sensors")
     public ModelAndView index() {
 
@@ -30,7 +29,9 @@ public class SensorsController {
 
         return mv;
     }
-
+    /**
+     * Ruta /backoffice/sensors GET
+     */
     @RequestMapping("/backoffice/sensors/{name}")
     public ModelAndView getApplication(@PathVariable String name) {
         ModelAndView mv = new ModelAndView();
@@ -41,12 +42,16 @@ public class SensorsController {
         return mv;
     }
 
-
+    /**
+     * Ruta /backoffice/sensors/new GET
+     */
     @RequestMapping("/backoffice/sensor/new")
     public String newSensor() {
         return ("backoffice/sensors/newsensor");
     }
-
+    /**
+     * Ruta /new-sensor GET
+     */
     @PostMapping("new-sensor")
     public String newSesnor(@RequestParam Map<String,String> allParams){
 
@@ -54,6 +59,16 @@ public class SensorsController {
         sensorRepository.save(new Sensor(allParams.get("name")));
         return "redirect:/backoffice/sensors";
 
+    }
+    /**
+     * Ruta /backoffice/sensors/delete/{name} POST
+     */
+    @PostMapping("/backoffice/sensors/delete/{name}")
+    public String deleteSensor(@PathVariable String name){
+        System.out.println(name);
+        Sensor sensor = sensorRepository.findByName(name);
+        sensorRepository.delete(sensor);
+        return "redirect:/backoffice/sensors";
     }
 
 }

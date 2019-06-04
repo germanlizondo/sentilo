@@ -23,6 +23,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Date Creation</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,12 @@
                                 <td></td>
                                 <td>${s.getCreationDate()}</td>
                                 <td><a href="/backoffice/sensors/${s.getName()}"><button type="button" class="btn btn-warning"><i class="fas fa-eye"></i></button></a></td>
+                                <td>
+                                    <form action="/backoffice/sensors/delete/${s.getName()}" method="POST">
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+
+                                </td>
 
                             </tr>
 

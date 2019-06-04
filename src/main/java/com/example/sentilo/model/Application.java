@@ -8,16 +8,37 @@ import java.util.Date;
 
 public class Application {
 
+    /**
+     * ID
+     */
     @Id
     private ObjectId id;
+    /**
+     * name
+     */
     private String name;
+    /**
+     * description
+     */
     private String description;
+    /**
+     * creationDate
+     */
     private Date creationDate;
+    /**
+     * permissions
+     */
     private ArrayList<Permiso> permissions = new ArrayList<Permiso>();
-
+    /**
+     * Constructor Vacio POJO
+     */
     public Application() {
     }
-
+    /**
+     * Constructor Recibe
+     * @param name
+     * @param description
+     */
     public Application(String name, String description) {
         this.name = name;
         this.description = description;

@@ -14,7 +14,9 @@ public class DataController {
 
     @Autowired
     private SensorRepository sensorRepository;
-
+    /**
+     * Ruta /data/{name} PUT
+     */
     @PutMapping("/data/{name}/{valor}")
     public JSONObject putData(@PathVariable String name,@PathVariable Double valor){
         JSONObject json = new JSONObject();
@@ -33,7 +35,9 @@ public class DataController {
         }
         return json;
     }
-
+    /**
+     * Ruta /getdata/{name} GET
+     */
     @GetMapping("getdata/{name}")
     public JSONObject getData(@PathVariable String name){
         JSONObject json = new JSONObject();
