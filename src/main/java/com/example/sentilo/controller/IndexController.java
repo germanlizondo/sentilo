@@ -5,15 +5,20 @@ import com.example.sentilo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @Controller
-
+@SessionAttributes("user")
 public class IndexController {
+
+
+    @ModelAttribute("user")
+    public User setUpUserForm() {
+        User user = new User();
+        return user;
+    }
 
     @Autowired
     private UserRepository repositori;
@@ -29,9 +34,29 @@ public class IndexController {
     }
 
     @PostMapping("/login")
-    public String postLogin(@RequestParam Map<String,String> allParams){
-        System.out.println("HELLO THERE"+allParams.entrySet());
-        return "redirect:/";
+    public String postLogin(@ModelAttribute("user") User user,@RequestParam Map<String,String> allParams){
+
+       User usuario = this.repositori.findByName(allParams.get("user"));
+
+        if(usuario!=null){
+
+            if(user.getPassword().equals(allParams.get("password"))){
+
+
+                user.setName(usuario.getName());
+                user.setRole(usuario.getRole());
+
+                System.out.println(usuario);
+                return "redirect:/backoffice/profile";
+
+            }else{
+                return "redirect:/login";
+
+            }
+        }else{
+            return "redirect:/login";
+        }
+
     }
 
     @RequestMapping("/signup")
@@ -59,6 +84,13 @@ public class IndexController {
     @RequestMapping("/errorSignup")
     public String errorSignup() {
         return ("mainpage/errorSignup");
+    }
+
+    @RequestMapping("/logout")
+    public String logout(@ModelAttribute("user") User user) {
+
+        user = null;
+        return "redirect:/";
     }
 
 
